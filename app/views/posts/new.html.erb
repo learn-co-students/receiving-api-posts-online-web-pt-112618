@@ -11,3 +11,34 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<div id="postResult">
+  <h2 id="postTitle"></h2>
+  <p id="postBody"></p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $('form').submit(function(event) {
+
+      // prevent the form from submitting the default way
+      event.preventDefault();
+
+      // takes form data and serilaizes it
+      var values = $(this).serialize();
+
+      // we use post() just like get() to retrieve the data. We pass the 'URL' and values.
+      // post() method also returns a jqXHR object, which implements the Promise interface
+      var posting = $.post('/posts', values);
+
+      // here we use the posting object to specify what should happen when the AJAX request is done.
+      // this is also where the response is handled
+      posting.done(function(data) {
+        // TODO: handle response
+        var post = data;
+        $('#postTitle').text(post['title']);
+        $('#postBody').text(post['description']);
+      });
+    });
+  });
+</script>
