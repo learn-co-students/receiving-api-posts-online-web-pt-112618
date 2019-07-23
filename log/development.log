@@ -6732,3 +6732,21 @@ Processing by PostsController#show as */*
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT 1[0m  [["id", "14"]]
   Rendered posts/show.html.erb within layouts/application (0.3ms)
 Completed 200 OK in 27ms (Views: 22.9ms | ActiveRecord: 1.1ms)
+Started GET "/posts/new" for ::1 at 2019-07-23 12:28:34 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 322ms (Views: 302.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/posts" for ::1 at 2019-07-23 12:28:46 -0500
+Processing by PostsController#create as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jQu0dtZ/QDzXrpwg2XCN0S6cTj9LRlW4MF31Gbz7xazDFtrGyLi/8OE8IH5F0Ce+cOx9Y11TuLrNm4R8Eeitvg==", "post"=>{"title"=>"a new post", "description"=>"with a description"}}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "a new post"], ["description", "with a description"], ["created_at", "2019-07-23 17:28:46.222636"], ["updated_at", "2019-07-23 17:28:46.222636"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+[active_model_serializers] Rendered PostSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 201 Created in 19ms (Views: 14.3ms | ActiveRecord: 1.8ms)
+
+
